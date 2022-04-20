@@ -29,23 +29,25 @@ export default function Nav() {
             <ul>
                 <li>
                     {token ?
-                    <Link className="main-nav-item" to="/profile">
-                        <i className="fa fa-user-circle main-nav-item-connected"></i>
-                        <UserName />
-                    </Link> : 
-                    <Link className="main-nav-item" to="/login">
-                        <i className="fa fa-user-circle"></i>
-                        Sign In
-                    </Link>}
+                        <Link className="main-nav-item" to="/profile">
+                            <i className="fa fa-user-circle main-nav-item-connected"></i>
+                            <UserName />
+                        </Link> : 
+                        <Link className="main-nav-item" to="/login">
+                            <i className="fa fa-user-circle main-nav-item-signin"></i>
+                            Sign In
+                        </Link>
+                    }
                 </li>
                 
                 {token ? 
                     <li>
-                    <i className="fas fa-sign-out-alt"></i>
+                        
 
-                    <Link to="/" onClick={logout}>
-                        <p>Sign Out</p>
-                    </Link>
+                        <Link className="main-nav-item " to="/" onClick={logout}>
+                        <i class="fa fa-sign-out main-nav-item-signout"></i>
+                            <p>Sign Out</p>
+                        </Link>
                     </li>
                      : null
                 }

@@ -25,6 +25,7 @@
 
     &-item {
         display: flex;
+        align-items: center;
         text-decoration: none;
         margin-right: 0.5rem;
 
@@ -32,8 +33,8 @@
             text-decoration: underline;
         }
 
-        &-connected {
-            margin: 1.1em 0.2em;
+        &-connected, &-signin, &-signout {
+            margin: 0 0.2em;
         }
     }
 
