@@ -1,16 +1,14 @@
 // import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import UserName from "../components/UserName";
+import GetUserProfile from "../components/GetUserProfile";
 
 export default function UserProfile() {
     const token = useSelector((state) => state.user.token);
-    
-    const email = useSelector((state) => state.user.email);
-    const users = useSelector((state) => state.user.users)
 
-    const userConnected = !email ? users : users.filter(user => user.email === email)[0];
-    const userFirstName = userConnected.firstName
+    const userFirstName = useSelector((state) => state.user.firstName)
+
+    GetUserProfile(token)
 
     // const [editionMode, setEditionMode] = useState(false);
 
