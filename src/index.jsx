@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+
 import './sass/main.scss';
+
 import Home from './Home';
 import Login from './pages/Login';
 import UserProfile from './pages/UserProfile';

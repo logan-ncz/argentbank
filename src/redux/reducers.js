@@ -4,6 +4,11 @@ export const userSlice = createSlice({
     name: 'user',
     initialState: {
         email: '',
+        token: '',
+        users: [
+            { firstName: 'Tony', lastName: 'Stark', email : 'tony@stark.com'},
+            { firstName: 'Steve', lastName: 'Rogers', email: 'steve@rogers.com'}
+        ]
     },
     reducers: {
         setEmail: (state, action) => {
