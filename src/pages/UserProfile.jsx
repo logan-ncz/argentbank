@@ -1,26 +1,33 @@
 // import { useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import GetUserProfile from "../components/GetUserProfile";
+import EditNameForm from "../components/EditNameForm";
+import GetUserProfile from "../utils/hooks/GetUserProfile";
 
 export default function UserProfile() {
     const token = useSelector((state) => state.user.token);
 
     const userFirstName = useSelector((state) => state.user.firstName)
 
-    GetUserProfile(token)
+    const [editionMode, setEditionMode] = useState(false);
 
-    // const [editionMode, setEditionMode] = useState(false);
-
-    // const toggleEditionMode = () => setEditionMode(!editionMode);
+    const toggleEditionMode = () => setEditionMode(!editionMode);
 
     if (!token) return <Navigate to="/" />;
+
+    GetUserProfile(token)
 
     return (
         <main className="main bg-dark">
             <div className="header">
-                <h1>Welcome back<br />{userFirstName}!</h1>
-                <button className="edit-button">Edit Name</button>
+                <h1>Welcome back</h1>
+                <h2>{userFirstName}!</h2>
+                {editionMode ?
+                <EditNameForm toggleEditionMode={toggleEditionMode} /> :
+                <button className="edit-button" onClick={toggleEditionMode}>Edit Name</button>
+                }
+                
             </div>
             <h2 className="sr-only">Accounts</h2>
             <section className="account">

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
-import { setEmail, setToken } from "../redux/reducers";
+import { setToken } from "../redux/reducers";
 
 export default function LoginForm() {
 
@@ -62,7 +62,6 @@ export default function LoginForm() {
             fetch(url, requestOptions)
             .then((response) => response.json())
             .then((json) => {
-                dispatch(setEmail(userInputs.email));
                 dispatch(setToken(json.body.token));
 
                 console.log("/user/login response to POST:", json);

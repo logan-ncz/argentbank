@@ -211,6 +211,33 @@ html {
     font-weight: bold;
     padding: 10px;
   }
+
+  .editNameForm {
+    input {
+      padding: 10px;
+      
+      &:nth-child(1) {
+        margin-right: 1em;
+      }
+    }
+
+    &-saveBtn {
+      border-color: #00bc77;
+      background-color: #00bc77;
+      color: #ffffff;
+      font-weight: bold;
+      padding: 10px;
+      margin-left: 2em;
+    }
+
+    &-cancelBtn {
+      border-color: #00bc77;
+      background-color: #ffffff;
+      color: #000000;
+      font-weight: bold;
+      padding: 10px;
+    }
+  }
   
   .header {
     color: #fff;

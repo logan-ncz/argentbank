@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setFirstName, setLastName } from "../redux/reducers";
+import { setFirstName, setLastName } from "../../redux/reducers";
 
 export default function GetUserProfile(token) {
     const dispatch = useDispatch()
