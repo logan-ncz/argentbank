@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import GetUserProfile from "../utils/hooks/GetUserProfile";
+import { setFirstName, setLastName } from "../redux/reducers";
 // import { setFirstName, setLastName } from "../redux/reducers";
 // import UpdateUserProfile from "../utils/hooks/UpdateUserProfile";
 
@@ -13,8 +13,6 @@ export default function EditNameForm(props) {
         firstName: '',
         lastName: '',
     });
-
-    // const [editFormIsSubmited, setEditFormIsSubmited] = useState(false);
 
     const handleInputChange = (event) => {
         const inputName = event.target.id;
@@ -31,14 +29,7 @@ export default function EditNameForm(props) {
         updateFunction()
 
         props.toggleEditionMode()
-
-        GetUserProfile(token)
     };
-
-    // console.log(
-    //     "userInputs =",
-    //     userInputs,
-    // );
 
     const updateFunction = () => {
         const url = "http://localhost:3001/api/v1/user/profile";
@@ -48,8 +39,6 @@ export default function EditNameForm(props) {
             lastName: userInputs.lastName,
         }
 
-        console.log(userInfosPayload)
-
         const requestOptions = {
             method: "PUT",
             body: JSON.stringify(userInfosPayload),
@@ -58,25 +47,21 @@ export default function EditNameForm(props) {
                 Authorization: `Bearer ${token}`,
             },
         };
-
-        console.log(userInfosPayload , requestOptions)
     
         // Send PUT request:
         fetch(url, requestOptions)
         .then((response) => response.json())
         .then((json) => {
             console.log("/user/profile response to PUT:", json);
+            dispatch(setFirstName(userInputs.firstName))
+            dispatch(setLastName(userInputs.lastName))
         })
         .catch((error) => {
             console.error(
             `An error has occured while posting to /user/profile: ${error}`
             );
         });
-    }
-
-   
-        
-
+    };
     
     return (
         <div className="editNameForm">
