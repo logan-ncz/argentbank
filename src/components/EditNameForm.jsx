@@ -7,6 +7,8 @@ import { setFirstName, setLastName } from "../redux/reducers";
 export default function EditNameForm(props) {
     
     const token = useSelector((state) => state.user.token);
+    const userFirstName = useSelector((state) => state.user.firstName);
+    const userLastName = useSelector((state) => state.user.lastName);
     const dispatch = useDispatch();
 
     const [ userInputs, setUserInputs ] = useState({
@@ -64,26 +66,30 @@ export default function EditNameForm(props) {
     };
     
     return (
-        <div className="editNameForm">
-            <form onSubmit={handleEditFormSubmit}>
+        <form onSubmit={handleEditFormSubmit} className="editNameForm">
+            <div>
                 <input
-                type="text"
-                id="firstName"
-                placeholder="Your first name"
-                onChange={handleInputChange}
+                    type="text"
+                    id="firstName"
+                    placeholder={userFirstName}
+                    onChange={handleInputChange}
                 />
 
                 <input
-                type="text"
-                id="lastName"
-                placeholder="Your last name"
-                onChange={handleInputChange}
+                    type="text"
+                    id="lastName"
+                    placeholder={userLastName}
+                    onChange={handleInputChange}
                 />
 
+                
+            </div>
+            
+            <div>
                 <button className="editNameForm-saveBtn" type="submit">Save</button>
 
                 <button className="editNameForm-cancelBtn" type="button" onClick={props.toggleEditionMode}>Cancel</button>
-            </form>
-        </div>
+            </div>
+        </form>
     )
 }

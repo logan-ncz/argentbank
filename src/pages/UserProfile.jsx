@@ -24,7 +24,7 @@ export default function UserProfile() {
         <main className="main bg-dark">
             <div className="header">
                 <h1>Welcome back</h1>
-                <h2>{userFirstName}!</h2>
+                {!editionMode && <h2>{userFirstName}!</h2>}
                 {editionMode ?
                 <EditNameForm toggleEditionMode={toggleEditionMode} /> :
                 <button className="edit-button" onClick={toggleEditionMode}>Edit Name</button>
