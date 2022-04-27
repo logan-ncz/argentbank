@@ -1,14 +1,16 @@
 import { useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
+
 import { setFirstName, setLastName } from "../redux/reducers";
-// import { setFirstName, setLastName } from "../redux/reducers";
-// import UpdateUserProfile from "../utils/hooks/UpdateUserProfile";
+
+import { selectUserName } from "../redux/selectors";
+
 
 export default function EditNameForm(props) {
-    
     const token = useSelector((state) => state.user.token);
-    const userFirstName = useSelector((state) => state.user.firstName);
-    const userLastName = useSelector((state) => state.user.lastName);
+    const userFirstName = useSelector(selectUserName('firstName'));
+    const userLastName = useSelector(selectUserName('lastName'));
     const dispatch = useDispatch();
 
     const [ userInputs, setUserInputs ] = useState({
@@ -81,8 +83,6 @@ export default function EditNameForm(props) {
                     placeholder={userLastName}
                     onChange={handleInputChange}
                 />
-
-                
             </div>
             
             <div>

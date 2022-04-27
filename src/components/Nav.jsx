@@ -1,13 +1,17 @@
 import { Link } from 'react-router-dom'
+import ArgentBankLogo from '../img/argentBankLogo.png'
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import { setEmail, setToken } from '../redux/reducers';
 
-import ArgentBankLogo from '../img/argentBankLogo.png'
-import UserName from './UserName';
+import { selectUserName } from "../redux/selectors";
+
 
 export default function Nav() {
     const token = useSelector((state) => state.user.token);
+
+    const firstName = useSelector(selectUserName('firstName'))
     
     const dispatch = useDispatch();
 
@@ -24,15 +28,18 @@ export default function Nav() {
                 src={ArgentBankLogo}
                 alt="Argent Bank Logo"
                 />
+
                 <h1 className="sr-only">Argent Bank</h1>
             </Link>
+            
             <ul>
                 <li>
                     {token ?
                         <Link className="main-nav-item" to="/profile">
                             <i className="fa fa-user-circle main-nav-item-connected"></i>
-                            <UserName />
-                        </Link> : 
+                            <p>{firstName}</p>
+                        </Link>
+                        :
                         <Link className="main-nav-item" to="/login">
                             <i className="fa fa-user-circle main-nav-item-signin"></i>
                             Sign In
@@ -40,18 +47,15 @@ export default function Nav() {
                     }
                 </li>
                 
-                {token ? 
+                {token &&
                     <li>
-                        
-
                         <Link className="main-nav-item " to="/" onClick={logout}>
+
                         <i class="fa fa-sign-out main-nav-item-signout"></i>
                             <p>Sign Out</p>
                         </Link>
                     </li>
-                     : null
                 }
-
             </ul>
         </nav>
     )

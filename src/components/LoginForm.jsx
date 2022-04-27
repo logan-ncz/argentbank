@@ -4,8 +4,8 @@ import { Navigate } from "react-router-dom";
 
 import { setEmail, setToken } from "../redux/reducers";
 
-export default function LoginForm() {
 
+export default function LoginForm() {
     const token = useSelector((state) => state.user.token);
     const dispatch = useDispatch();
 
