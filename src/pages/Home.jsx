@@ -1,6 +1,6 @@
-import chatIcon from '../src/img/icon-chat.png'
-import moneyIcon from '../src/img/icon-money.png'
-import securityIcon from '../src/img/icon-security.png'
+import chatIcon from '../../src/img/icon-chat.png'
+import moneyIcon from '../../src/img/icon-money.png'
+import securityIcon from '../../src/img/icon-security.png'
 
 export default function Home() {
   return (
