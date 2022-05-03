@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+
 import ArgentBankLogo from '../img/argentBankLogo.png'
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,7 +9,12 @@ import { setEmail, setToken } from '../redux/reducers';
 import { selectUserName } from "../redux/selectors";
 
 
-export default function Nav() {
+/**Component used to render the NavBar
+ * @component
+ * 
+ * @returns {}
+ */
+function Nav() {
     const token = useSelector((state) => state.user.token);
 
     const firstName = useSelector(selectUserName('firstName'))
@@ -60,3 +66,5 @@ export default function Nav() {
         </nav>
     )
 }
+
+export default Nav

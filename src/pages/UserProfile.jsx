@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom";
 import AccountCard from "../components/AccountCard";
 import EditNameForm from "../components/EditNameForm";
 import { USER_ACCOUNTS } from "../data/userAccountsMock";
-import useGetUserProfile from "../utils/hooks/GetUserProfile";
+import GetUserProfile from "../utils/hooks/GetUserProfile";
 
 export default function UserProfile() {
     const token = useSelector((state) => state.user.token);
@@ -16,7 +16,7 @@ export default function UserProfile() {
 
     const toggleEditionMode = () => setEditionMode(!editionMode);
 
-    useGetUserProfile(token)
+    GetUserProfile(token)
 
     if (!token) return <Navigate to="/" />;
 

@@ -2,7 +2,11 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setFirstName, setLastName } from "../../redux/reducers";
 
-export default function GetUserProfile(token) {
+/**Custom hook used to get the user profile from the API when the user login
+ * 
+ * @param {*} token
+ */
+function GetUserProfile(token) {
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -32,3 +36,5 @@ export default function GetUserProfile(token) {
         });
     }, [dispatch, token])
 }
+
+export default GetUserProfile

@@ -1,4 +1,11 @@
-export default function AccountCard({ accountName, amount, balanceType }) {
+/**Component used to render AccountCards on user's profile
+ * @component
+ * 
+ * @param {*} proptypes 
+ * @returns {}
+ */
+
+function AccountCard({ accountName, amount, balanceType }) {
     return (
         <section className="account">
             <div className="account-content-wrapper">
@@ -13,3 +20,5 @@ export default function AccountCard({ accountName, amount, balanceType }) {
         </section>
     )
 }
+
+export default AccountCard
